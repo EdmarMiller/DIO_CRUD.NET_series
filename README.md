@@ -196,7 +196,9 @@ namespace DIO.Series
   // Aqui estamos falando que essa classe implementa uma inteface de Series
 	public class SerieRepositorio : IRepositorio<Serie>
 	{
-        private List<Serie> listaSerie = new List<Serie>();
+    private List<Serie> listaSerie = new List<Serie>();
+
+    // Recebe objeto e seta nessa possição do Vetor
 		public void Atualiza(int id, Serie objeto)
 		{
 			listaSerie[id] = objeto;
