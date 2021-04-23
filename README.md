@@ -89,5 +89,32 @@ namespace DIO.Series
         }
     }
 }
+```
+        
+>Vamos criar a classes Series que vai herdar da Classe EntidadeBase, usamos : como abaixo
+```C#
+    public class Series : EntidadeBase
+    {
+        
+    }
         
 ```
+Nesse caso abaixo conseguimos usar o Id sem causar erros.
+```C#
+using System;
+
+namespace DIO.Series
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+          Serie meuObjeto = new Serie();
+          Console.WriteLine("Hello World!");
+        }
+    }
+}
+```
+
+
+Genero dentro de Series é um Enum
