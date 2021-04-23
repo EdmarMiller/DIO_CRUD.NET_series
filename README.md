@@ -148,3 +148,85 @@ Genero dentro de Series é um Enum
         
 ```
 
+> Colocaremos dos métodos encapsulado retorna titulo e retorna id, fazemos isso por os atrubutos titulo e id estão com private.
+```C#
+   public string retornaTitulo()
+		{
+			return this.Titulo;
+		}
+
+		public int retornaId()
+		{
+			return this.Id;
+		}
+        
+```
+
+
+
+Vamos criar uma Interface que vai se chamar IRepositorio.cs
+
+```c#
+using System.Collections.Generic;
+
+namespace DIO.Series.Interfaces
+{   // <T> na proxima linha diz, que essa Classes inpremente um repositorio, dessa outra classes T 
+    public interface IRepositorio<T>
+    {// Método que se chma lista e retorna lista de T
+        List<T> Lista();
+      // RetornaId que passamos por parametro id e ele retorna um T
+        T RetornaPorId(int id);   
+      // Teremos outros métodos como abaixo   
+        void Insere(T entidade);        
+        void Exclui(int id);        
+        void Atualiza(int id, T entidade);
+        int ProximoId();
+    }
+}
+```
+Criaremos uma Classes que vai se chamar SerieRepositorio
+
+```c#
+using System;
+using System.Collections.Generic;
+using DIO.Series.Interfaces;
+
+namespace DIO.Series
+{
+  // Aqui estamos falando que essa classe implementa uma inteface de Series
+	public class SerieRepositorio : IRepositorio<Serie>
+	{
+        private List<Serie> listaSerie = new List<Serie>();
+		public void Atualiza(int id, Serie objeto)
+		{
+			listaSerie[id] = objeto;
+		}
+
+		public void Exclui(int id)
+		{
+			listaSerie[id].Excluir();
+		}
+
+		public void Insere(Serie objeto)
+		{
+			listaSerie.Add(objeto);
+		}
+
+		public List<Serie> Lista()
+		{
+			return listaSerie;
+		}
+
+		public int ProximoId()
+		{
+			return listaSerie.Count;
+		}
+
+		public Serie RetornaPorId(int id)
+		{
+			return listaSerie[id];
+		}
+	}
+}
+
+```
