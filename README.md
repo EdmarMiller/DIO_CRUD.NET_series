@@ -43,3 +43,51 @@ que **devem** ser implementados
 dotnet new console -n DIO.Series
 ```
 
+> criar duas pastas na raiz, Classes e Interfaces 
+
+```shell
+
+│   DIO.Series.csproj
+│   Program.cs
+│
+├───bin
+│   
+├───Classes
+│       EntidadeBase.cs
+│
+├───Interfaces
+└───obj
+        
+```
+
+> Como queremos que todo programa tenha acesso a essa classe, deixamos o namespace... sem a Classes referente a pasta. Ficando so DIO.Series
+```C#
+namespace DIO.Series.Classes
+namespace DIO.Series
+        
+```
+> Criamos uma crasse abstract, somente com Id
+```C#
+namespace DIO.Series.Classes
+namespace DIO.Series
+        
+```
+
+> se tentarmos criar a classe abaixo no programa principal, recebereos o aviso que não
+> podemos instanciar uma Classes abstrata ou interface
+```C#
+using System;
+
+namespace DIO.Series
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+          EntidadeBase minhaClasse = new EntidadeBase();
+          Console.WriteLine("Hello World!");
+        }
+    }
+}
+        
+```
